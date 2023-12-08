@@ -24,7 +24,7 @@ class ProfitCalculator {
       return;
     }
     // Get the keys from itemsData (item names)
-    let itemNames = Object.keys(this.itemsData);
+    let itemNames = Object.keys(this.itemData);
     // Filter the market data for items present in itemsData
     let relevantPrices = this.marketData.filter((marketItem) => itemNames.includes(marketItem.name));
 
