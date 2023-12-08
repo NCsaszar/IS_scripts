@@ -14,6 +14,7 @@
 
 (function () {
   ('use strict');
+  const initialTime = Date.now();
   const marketData = new MarketData();
   const itemData = new ItemData();
   const profitCalculator = new ProfitCalculator(marketData.data, itemData.data);
@@ -21,6 +22,7 @@
   // Initialize UI observers
   uiManager.initObservers();
   //attach to window
+
   window.marketData = marketData;
   window.itemData = itemData;
   window.profitCalculator = profitCalculator;

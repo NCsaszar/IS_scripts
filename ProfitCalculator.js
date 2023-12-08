@@ -30,7 +30,6 @@ class ProfitCalculator {
     let itemNames = Object.keys(this.itemData);
     // Filter the market data for items present in itemsData
     let relevantPrices = this.marketData.filter((marketItem) => itemNames.includes(marketItem.name));
-    console.log('relevant prices func:', relevantPrices);
     return relevantPrices;
   }
 

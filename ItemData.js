@@ -1,6 +1,8 @@
 class ItemData {
   constructor() {
     this.data = {};
+    this.inventory = {};
+    this.itemsGained = {};
   }
 
   collectData() {
