@@ -6,6 +6,10 @@
 // @author       Ceezur
 // @match        https://www.play.idlescape.com/
 // @grant        none
+// @require      https://raw.githubusercontent.com/NCsaszar/IS_scripts/main/MarketData.js
+// @require      https://raw.githubusercontent.com/NCsaszar/IS_scripts/main/ItemData.js
+// @require      https://raw.githubusercontent.com/NCsaszar/IS_scripts/main/ProfitCalculator.js
+// @require      https://raw.githubusercontent.com/NCsaszar/IS_scripts/main/UIManager.js
 // ==/UserScript==
 
 (function () {
