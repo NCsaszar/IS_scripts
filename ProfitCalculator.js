@@ -8,13 +8,17 @@ class ProfitCalculator {
   calculate() {
     let items = this.getRelevantItemPrices();
     console.log('items from get relevant', items);
-    items.forEach((item) => {
-      let price = item.minPrice;
-      let qty = itemsData[item.name];
-      let total = price * qty;
-      profits[item.name] = total.toLocaleString();
-    });
-    return this.profits;
+    if (items.length > 0) {
+      items.forEach((item) => {
+        let price = item.minPrice;
+        let qty = itemsData[item.name];
+        let total = price * qty;
+        profits[item.name] = total.toLocaleString();
+      });
+      return this.profits;
+    } else {
+      return null;
+    }
   }
 
   getRelevantItemPrices() {
@@ -27,7 +31,7 @@ class ProfitCalculator {
     let itemNames = Object.keys(this.itemData);
     // Filter the market data for items present in itemsData
     let relevantPrices = this.marketData.filter((marketItem) => itemNames.includes(marketItem.name));
-
+    console.log('relevant prices func:', relevantPrices);
     return relevantPrices;
   }
 }
