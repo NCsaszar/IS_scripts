@@ -2,7 +2,7 @@ class UIManager {
   constructor(profits) {
     this.buffsObserver = new MutationObserver(this.handleBuffsMutation.bind(this));
     this.switchObserver = new MutationObserver(this.handleSwitchMutation.bind(this));
-    this.inventoryObserver = new MutationObserver(this.handleInventoryMutation.bind(this));
+
     this.profits = profits; // This assumes profits are passed to the UI Manager or calculated within
   }
 
@@ -16,40 +16,6 @@ class UIManager {
       childList: true,
       subtree: true,
     });
-
-    this.inventoryObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  }
-
-  getInventory() {
-    const parentElements = document.querySelectorAll('.all-items[data-tab="1"], .all-items[data-tab="undefined"]');
-    const itemData = {};
-
-    parentElements.forEach((parent) => {
-      const items = parent.querySelectorAll(':scope > .item');
-      items.forEach((item) => {
-        const itemName = item.querySelector('img').alt;
-        const quantity = item.querySelector('.centered').textContent.trim();
-        itemData[itemName] = quantity;
-      });
-    });
-
-    return itemData;
-  }
-
-  handleInventoryMutation(mutation, obs) {
-    for (let mutation of mutations) {
-      if (mutation.addedNodes.length) {
-        const inventory = this.getInventory();
-        if (Object.keys(inventory).length) {
-          window.inventory = inventory;
-          inventoryObserver.disconnect(); // Stop observing after inventory is loaded
-          break;
-        }
-      }
-    }
   }
 
   handleBuffsMutation(mutations, obs) {
