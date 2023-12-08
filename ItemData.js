@@ -1,6 +1,6 @@
 class ItemData {
   constructor() {
-    this.itemsData = {};
+    this.data = {};
   }
 
   collectData() {
@@ -15,7 +15,7 @@ class ItemData {
 
       if (itemName && rate) {
         var rateValue = parseFloat(rate.replace('/hr', '').replace(/,/g, ''), 10);
-        this.itemsData[itemName] = rateValue;
+        this.data[itemName] = rateValue;
       }
     });
   }

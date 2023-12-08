@@ -7,13 +7,12 @@ class ProfitCalculator {
 
   calculate() {
     let items = this.getRelevantItemPrices();
-    console.log('items from get relevant', items);
     if (items.length > 0) {
       items.forEach((item) => {
         let price = item.minPrice;
-        let qty = itemsData[item.name];
+        let qty = this.itemData[item.name];
         let total = price * qty;
-        profits[item.name] = total.toLocaleString();
+        this.profits[item.name] = total.toLocaleString();
       });
       return this.profits;
     } else {
@@ -33,5 +32,13 @@ class ProfitCalculator {
     let relevantPrices = this.marketData.filter((marketItem) => itemNames.includes(marketItem.name));
     console.log('relevant prices func:', relevantPrices);
     return relevantPrices;
+  }
+
+  setMarketData(updatedMarketData) {
+    this.marketData = updatedMarketData;
+  }
+
+  setItemData(updatedItemData) {
+    this.itemData = updatedItemData;
   }
 }

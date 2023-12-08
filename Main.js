@@ -16,10 +16,15 @@
   ('use strict');
   const marketData = new MarketData();
   const itemData = new ItemData();
-  const profitCalculator = new ProfitCalculator(marketData.data, itemData.itemsData);
+  const profitCalculator = new ProfitCalculator(marketData.data, itemData.data);
   const uiManager = new UIManager(profitCalculator.profits);
   // Initialize UI observers
   uiManager.initObservers();
+  //attach to window
+  window.marketData = marketData;
+  window.itemData = itemData;
+  window.profitCalculator = profitCalculator;
+  window.uiManager = uiManager;
 
   // Fetch market data and update at intervals
   marketData.fetchMarketData();
@@ -28,14 +33,12 @@
   // Collect item data and update at intervals
   setInterval(() => itemData.collectData(), 1000);
 
-  window.marketData = marketData;
-  window.itemData = itemData;
-  window.profitCalculator = profitCalculator;
-  window.uiManager = uiManager;
   // Calculate profits and update UI at intervals
   setInterval(() => {
+    profitCalculator.setItemData(window.itemData.data);
+    profitCalculator.setMarketData(window.marketData.data);
     profitCalculator.calculate();
     var modal = document.getElementById('gold-stats-modal');
-    uiManager.updateModalContent(modal);
+    uiManager.updateModalContent(modal, profitCalculator.profits);
   }, 1000);
 })();
