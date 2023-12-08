@@ -7,7 +7,7 @@ class ProfitCalculator {
 
   calculate() {
     let items = this.getRelevantItemPrices();
-
+    console.log('items from get relevant', items);
     items.forEach((item) => {
       let price = item.minPrice;
       let qty = itemsData[item.name];

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Money Calc
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.3
 // @description  Auto-click switch in Idlescape and collect data
 // @author       Ceezur
 // @match        https://www.play.idlescape.com/
@@ -16,7 +16,7 @@
   ('use strict');
   const marketData = new MarketData();
   const itemData = new ItemData();
-  const profitCalculator = new ProfitCalculator(marketData.data, itemData.data);
+  const profitCalculator = new ProfitCalculator(marketData.data, itemData.itemsData);
   const uiManager = new UIManager(profitCalculator.profits);
   // Initialize UI observers
   uiManager.initObservers();
